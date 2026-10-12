@@ -1,0 +1,60 @@
+{
+ "manifest_version": 1,
+ "description": "Sample deprecation manifest: Python standard library removals finalized in 3.12 (facts as of 2026-10-12).",
+ "apis": [
+  {
+   "id": "py-imp-module",
+   "match": "\\bimport imp\\b|\\bimp\\.(load_source|find_module|new_module)\\b",
+   "match_type": "regex",
+   "severity": "removed",
+   "removed_in": "3.12",
+   "replacement": "importlib",
+   "message": "The imp module was removed in Python 3.12."
+  },
+  {
+   "id": "py-distutils",
+   "match": "\\bimport distutils\\b|\\bfrom distutils\\b",
+   "match_type": "regex",
+   "severity": "removed",
+   "removed_in": "3.12",
+   "replacement": "setuptools",
+   "message": "distutils was removed in Python 3.12; use setuptools."
+  },
+  {
+   "id": "py-ssl-wrap-socket",
+   "match": "ssl\\.wrap_socket\\s*\\(",
+   "match_type": "regex",
+   "severity": "removed",
+   "removed_in": "3.12",
+   "replacement": "ssl.SSLContext.wrap_socket()",
+   "message": "ssl.wrap_socket() was removed in Python 3.12."
+  },
+  {
+   "id": "py-asyncio-get-event-loop",
+   "match": "asyncio\\.get_event_loop\\s*\\(",
+   "match_type": "regex",
+   "severity": "deprecated",
+   "deprecated_since": "3.10",
+   "replacement": "asyncio.get_running_loop()",
+   "message": "get_event_loop() emits a DeprecationWarning when no running loop exists."
+  },
+  {
+   "id": "py-unittest-assert-equals-alias",
+   "match": "\\.assert(Equals|NotEquals|FailUnless)\\s*\\(",
+   "match_type": "regex",
+   "severity": "removed",
+   "removed_in": "3.12",
+   "replacement": "assertEqual / assertNotEqual / assertTrue",
+   "message": "The unittest deprecated alias methods were removed in Python 3.12."
+  },
+  {
+   "id": "py-configparser-safe-config-parser",
+   "match": "configparser\\.SafeConfigParser\\s*\\(",
+   "match_type": "regex",
+   "severity": "removed",
+   "removed_in": "3.12",
+   "replacement": "configparser.ConfigParser",
+   "message": "SafeConfigParser was removed in Python 3.12."
+  }
+ ]
+}
