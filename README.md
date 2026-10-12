@@ -2,6 +2,8 @@
 
 deprecated-api-scan is a stdlib-only CLI that checks your source tree against a declarative deprecation manifest — each entry names a pattern, a severity, the version it disappears in, and a migration target — and reports file:line findings with fixes, escalating to "removed" once your `--target` version crosses an entry's removal line. Use it when an ecosystem move (like Python 3.12) is coming and you want one command that tells you exactly what breaks.
 
+<p align="center"><img src="docs/demo.gif" alt="demo" width="720"></p>
+
 ## Problem
 
 Deprecations fail quietly: the warning scrolls past in CI logs, the code keeps running, and months later a runtime upgrade turns every ignored warning into a hard import error. Vendor tooling exists for specific ecosystems (Kubernetes YAML, IDE linting), but there is no generic, offline, grep-grade mechanism where *your team* defines what counts as deprecated in *your* codebase — including internal APIs — and gets a machine-readable migration checklist.
